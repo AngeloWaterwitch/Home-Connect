@@ -42,3 +42,13 @@ export function useReveal(ref, deps = []) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }
+
+// In-page jump that works under HashRouter, where a bare "#id" href would change the route.
+export function jumpTo(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: window.matchMedia(QUERY).matches ? 'auto' : 'smooth' });
+  if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+  el.focus({ preventScroll: true });
+}

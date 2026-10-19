@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { NAV } from '../data';
 import { useCart } from '../CartContext';
-import { useReducedMotion } from '../hooks';
+import { useReducedMotion, jumpTo } from '../hooks';
 import logo from '../assets/logo/Home Connect.png';
 import './hc.css';
 
@@ -52,7 +52,7 @@ export default function Layout() {
 
   return (
     <div className="hc">
-      <a className="hc-skip" href="#main">Skip to content</a>
+      <a className="hc-skip" href="#main" onClick={(e) => jumpTo(e, 'main')}>Skip to content</a>
       <header className={`hc-nav ${solid || open ? 'is-solid' : ''}`}>
         <Link to="/" className="hc-brand" aria-label="HomeConnect home">
           <img src={logo} alt="" width="36" height="36" />

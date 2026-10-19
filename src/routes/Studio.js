@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Studio.css';
-import { useReducedMotion } from '../hooks';
+import { useReducedMotion, jumpTo } from '../hooks';
 import homeVideo from '../assets/videos/6894023-uhd_3840_2160_25fps.mp4';
 import logo from '../assets/logo/Home Connect.png';
 import img1 from '../assets/images/WhatsApp Image 2024-08-31 at 21.00.24_445cb595.jpg';
@@ -79,14 +79,14 @@ export default function Studio() {
 
   return (
     <div ref={root} className="studio">
-      <a className="skip" href="#main">Skip to content</a>
+      <a className="skip" href="#main" onClick={(e) => jumpTo(e, 'main')}>Skip to content</a>
       <header className="nav">
-        <a href="#top" className="brand">Studio<span>.</span></a>
+        <a href="#top" onClick={(e) => jumpTo(e, 'top')} className="brand">Studio<span>.</span></a>
         <nav aria-label="Primary">
-          <a href="#capabilities">Capabilities</a>
-          <a href="#work">Work</a>
-          <a href="#process">Process</a>
-          <a href="#contact" className="nav-cta">Start a project</a>
+          <a href="#capabilities" onClick={(e) => jumpTo(e, 'capabilities')}>Capabilities</a>
+          <a href="#work" onClick={(e) => jumpTo(e, 'work')}>Work</a>
+          <a href="#process" onClick={(e) => jumpTo(e, 'process')}>Process</a>
+          <a href="#contact" onClick={(e) => jumpTo(e, 'contact')} className="nav-cta">Start a project</a>
         </nav>
       </header>
 
@@ -108,8 +108,8 @@ export default function Studio() {
             for brands that refuse to look ordinary.
           </p>
           <div className="hero-actions hero-fade">
-            <a href="#work" className="btn" onPointerMove={onMagnet} onPointerLeave={offMagnet}>See our work</a>
-            <a href="#contact" className="btn ghost" onPointerMove={onMagnet} onPointerLeave={offMagnet}>Talk to us</a>
+            <a href="#work" onClick={(e) => jumpTo(e, 'work')} className="btn" onPointerMove={onMagnet} onPointerLeave={offMagnet}>See our work</a>
+            <a href="#contact" onClick={(e) => jumpTo(e, 'contact')} className="btn ghost" onPointerMove={onMagnet} onPointerLeave={offMagnet}>Talk to us</a>
           </div>
           <span className="scroll-hint hero-fade">Scroll</span>
         </section>
